@@ -1,0 +1,12 @@
+[
+  {"q": "how do i pay tuition fee", "expect": "fee_payment"},
+  {"q": "where is my admit card", "expect": "hall_ticket"},
+  {"q": "documents needed for admission", "expect": "admission_docs"},
+  {"q": "minimum attendance to sit in exams", "expect": "attendance_rule"},
+  {"q": "i want my money back after leaving", "expect": "refund"},
+  {"q": "wifi not working", "expect": "wifi_password"},
+  {"q": "how to get hostel", "expect": "hostel"},
+  {"q": "when will results come", "expect": "results"},
+  {"q": "internship opportunities", "expect": "placement"},
+  {"q": "need a bonafide certificate", "expect": "certificates"}
+]

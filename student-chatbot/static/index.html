@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student Help Desk</title>
+<style>
+:root{--ink:#10243E;--mist:#EAF0F5;--paper:#FFFFFF;--teal:#0F7C80;--teal-d:#0B5E61;--amber:#FFF1D6;--amber-b:#E8A33D;--line:#CFDAE4;--muted:#55677C}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",system-ui,sans-serif;background:var(--mist);color:var(--ink);min-height:100vh}
+.app{max-width:1100px;margin:0 auto;padding:24px;display:grid;grid-template-columns:300px 1fr;gap:24px;min-height:100vh}
+h1{font-family:Georgia,serif;font-size:30px;line-height:1.15;margin:0 0 6px}
+.rail p{color:var(--muted);margin:0 0 20px;font-size:15px;line-height:1.5}
+.rail h2{font-size:15px;margin:22px 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer}
+.chip:hover{border-color:var(--teal)}
+.login{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:8px}
+.login input{padding:9px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px}
+.login button,.send{background:var(--teal);color:#fff;border:0;border-radius:8px;padding:10px 16px;font-size:15px;cursor:pointer}
+.login button:hover,.send:hover{background:var(--teal-d)}
+.status{font-size:13px;color:var(--muted);min-height:18px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:16px;display:flex;flex-direction:column;height:calc(100vh - 48px);min-height:480px}
+.log{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:14px}
+.msg{max-width:78%;padding:12px 16px;border-radius:14px;line-height:1.5;font-size:16px;white-space:pre-wrap}
+.bot{background:var(--mist);align-self:flex-start;border-bottom-left-radius:4px}
+.me{background:var(--teal);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.staff{background:var(--amber);border:1px solid var(--amber-b)}
+.meta{font-size:13px;color:var(--muted);margin-top:8px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.meta button{border:1px solid var(--line);background:#fff;border-radius:6px;padding:3px 9px;cursor:pointer;font-size:13px}
+form{display:flex;gap:10px;padding:14px;border-top:1px solid var(--line)}
+form input{flex:1;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-size:16px}
+:focus-visible{outline:3px solid #7FC8CA;outline-offset:2px}
+@media(max-width:800px){.app{grid-template-columns:1fr;padding:12px}.panel{height:80vh}.msg{max-width:92%}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="rail">
+    <h1>Student Help Desk</h1>
+    <p>Ask about admissions, fees, exams, hostel and more. Answers come from official university information.</p>
+    <h2>Common questions</h2>
+    <div class="chips" id="chips"></div>
+    <h2>Your own details</h2>
+    <form class="login" id="loginForm">
+      <input id="sid" placeholder="Student ID" autocomplete="username">
+      <input id="pw" type="password" placeholder="Password" autocomplete="current-password">
+      <button type="submit">Sign in</button>
+      <div class="status" id="loginStatus">Sign in to see your fees and attendance.</div>
+    </form>
+  </aside>
+  <main class="panel">
+    <div class="log" id="log" aria-live="polite"></div>
+    <form id="chatForm">
+      <input id="msg" maxlength="500" placeholder="Type your question" aria-label="Your question" autocomplete="off">
+      <button class="send" type="submit">Send</button>
+    </form>
+  </main>
+</div>
+<script>
+const log = document.getElementById("log"), msgBox = document.getElementById("msg");
+let token = sessionStorage.getItem("token") || "", history = [];
+const topics = ["How do I apply for admission?","How can I pay my fees?","Where is the exam timetable?","How do I apply for a hostel room?","What is my fee due?","What is my attendance?"];
+const chips = document.getElementById("chips");
+topics.forEach(t => { const b = document.createElement("button"); b.className = "chip"; b.type = "button"; b.textContent = t; b.onclick = () => send(t); chips.appendChild(b); });
+
+function add(text, who, extra) {
+  const d = document.createElement("div");
+  d.className = "msg " + who + (extra && extra.escalated ? " staff" : "");
+  d.textContent = text;
+  if (extra && who === "bot") {
+    const m = document.createElement("div"); m.className = "meta";
+    if (extra.sources && extra.sources.length) m.append("Source: " + extra.sources.map(s => s.source).join(", "));
+    if (extra.chat_id) {
+      [["Helpful", 1], ["Not helpful", 0]].forEach(([label, val]) => {
+        const b = document.createElement("button"); b.type = "button"; b.textContent = label;
+        b.onclick = async () => { await fetch("/api/feedback", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({chat_id: extra.chat_id, rating: val})}); m.textContent = "Thanks for your feedback."; };
+        m.appendChild(b);
+      });
+    }
+    d.appendChild(m);
+  }
+  log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
+}
+
+async function send(text) {
+  text = text.trim(); if (!text) return;
+  add(text, "me"); msgBox.value = "";
+  const wait = add("Typing...", "bot");
+  try {
+    const res = await fetch("/api/chat", {method:"POST", headers:{"Content-Type":"application/json", ...(token ? {Authorization: "Bearer " + token} : {})}, body: JSON.stringify({message: text, history})});
+    const data = await res.json();
+    wait.remove();
+    if (!res.ok) { add(data.detail || "Something went wrong. Please try again.", "bot"); return; }
+    add(data.answer, "bot", data);
+    history.push({role:"user", content:text}, {role:"assistant", content:data.answer});
+    history = history.slice(-8);
+  } catch (e) { wait.remove(); add("I cannot reach the server. Check your connection and try again.", "bot"); }
+}
+
+document.getElementById("chatForm").onsubmit = e => { e.preventDefault(); send(msgBox.value); };
+document.getElementById("loginForm").onsubmit = async e => {
+  e.preventDefault();
+  const st = document.getElementById("loginStatus");
+  const res = await fetch("/api/login", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({student_id: sid.value, password: pw.value})});
+  const data = await res.json();
+  if (!res.ok) { st.textContent = data.detail; return; }
+  token = data.token; sessionStorage.setItem("token", token); pw.value = "";
+  st.textContent = "Signed in as " + data.name + ".";
+};
+add("Hello! I am the Student Help Desk assistant. Ask me about admissions, fees, exams, hostel, library and more.", "bot");
+</script>
+</body>
+</html>

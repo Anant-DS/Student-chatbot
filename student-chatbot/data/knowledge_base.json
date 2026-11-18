@@ -1,0 +1,288 @@
+[
+  {
+    "id": "admission_process",
+    "title": "Admission Process",
+    "question": "How do I apply for admission?",
+    "answer": "Apply online through the Admissions page: create an account, fill in the application form, upload the required documents and pay the application fee. You will receive a confirmation email. Track your status from the same account.",
+    "keywords": [
+      "apply",
+      "admission",
+      "application",
+      "form",
+      "how",
+      "to",
+      "join",
+      "enroll",
+      "new",
+      "student"
+    ],
+    "source": "Admissions Page"
+  },
+  {
+    "id": "admission_docs",
+    "title": "Admission Docs",
+    "question": "What documents are required for admission?",
+    "answer": "Keep scanned copies of your mark sheets, transfer or migration certificate, ID proof, passport-size photograph and category certificate if applicable. Original documents are verified at the time of registration.",
+    "keywords": [
+      "documents",
+      "required",
+      "marksheet",
+      "certificate",
+      "id",
+      "proof",
+      "photograph",
+      "verification"
+    ],
+    "source": "Admissions Handbook"
+  },
+  {
+    "id": "eligibility",
+    "title": "Eligibility",
+    "question": "What is the eligibility for admission?",
+    "answer": "Eligibility depends on the programme. Undergraduate programmes usually need a pass in the qualifying school examination with the minimum percentage stated on the programme page. Postgraduate programmes need a relevant bachelor's degree.",
+    "keywords": [
+      "eligibility",
+      "criteria",
+      "minimum",
+      "marks",
+      "percentage",
+      "qualification"
+    ],
+    "source": "Programme Pages"
+  },
+  {
+    "id": "fee_payment",
+    "title": "Fee Payment",
+    "question": "How can I pay my fees?",
+    "answer": "Log in to the student portal, open Finance, choose Pay Fees and select UPI, net banking or card. Download the receipt after payment. Fees can also be paid at the accounts office during working hours.",
+    "keywords": [
+      "pay",
+      "fees",
+      "payment",
+      "online",
+      "upi",
+      "net",
+      "banking",
+      "card",
+      "receipt",
+      "tuition"
+    ],
+    "source": "Finance Office"
+  },
+  {
+    "id": "fee_late",
+    "title": "Fee Late",
+    "question": "What happens if I pay the fee late?",
+    "answer": "A late fee may apply after the due date announced in the academic calendar. If you have a genuine difficulty, apply to the accounts office before the due date to request an extension.",
+    "keywords": [
+      "late",
+      "fee",
+      "penalty",
+      "fine",
+      "due",
+      "date",
+      "extension",
+      "deadline"
+    ],
+    "source": "Finance Office"
+  },
+  {
+    "id": "refund",
+    "title": "Refund",
+    "question": "How do I get a fee refund?",
+    "answer": "Submit a refund request form to the accounts office with your fee receipt and a withdrawal letter. Refunds follow the institutional refund policy and are processed to the original payment method.",
+    "keywords": [
+      "refund",
+      "money",
+      "back",
+      "withdraw",
+      "cancel",
+      "admission"
+    ],
+    "source": "Finance Office"
+  },
+  {
+    "id": "scholarship",
+    "title": "Scholarship",
+    "question": "What scholarships are available?",
+    "answer": "The university offers merit-based, need-based and government scholarships. Check the Scholarships page for eligibility, forms and deadlines, and submit your application with income and marks documents.",
+    "keywords": [
+      "scholarship",
+      "financial",
+      "aid",
+      "merit",
+      "need",
+      "based",
+      "stipend",
+      "grant"
+    ],
+    "source": "Scholarship Cell"
+  },
+  {
+    "id": "exam_schedule",
+    "title": "Exam Schedule",
+    "question": "Where can I find the exam timetable?",
+    "answer": "The examination timetable is published on the student portal under Examinations and on the notice board at least two weeks before the exams begin.",
+    "keywords": [
+      "exam",
+      "timetable",
+      "schedule",
+      "date",
+      "sheet",
+      "datesheet",
+      "when",
+      "exams"
+    ],
+    "source": "Examination Cell"
+  },
+  {
+    "id": "hall_ticket",
+    "title": "Hall Ticket",
+    "question": "How do I download my hall ticket?",
+    "answer": "Open the student portal, go to Examinations, choose Hall Ticket and download the PDF. Clear any pending fees or attendance issues first, since these can block the download.",
+    "keywords": [
+      "hall",
+      "ticket",
+      "admit",
+      "card",
+      "download",
+      "exam",
+      "entry"
+    ],
+    "source": "Examination Cell"
+  },
+  {
+    "id": "results",
+    "title": "Results",
+    "question": "When and where are results announced?",
+    "answer": "Results are published on the student portal under Results. The date is announced by the Examination Cell. For re-evaluation, apply within the window stated in the result notice.",
+    "keywords": [
+      "result",
+      "marks",
+      "grade",
+      "announced",
+      "re-evaluation",
+      "revaluation",
+      "recheck"
+    ],
+    "source": "Examination Cell"
+  },
+  {
+    "id": "attendance_rule",
+    "title": "Attendance Rule",
+    "question": "What is the attendance requirement?",
+    "answer": "Students normally need a minimum of 75 percent attendance in each subject to appear in exams. Medical leave with a valid certificate may be considered by the department head.",
+    "keywords": [
+      "attendance",
+      "minimum",
+      "75",
+      "percent",
+      "shortage",
+      "medical",
+      "leave",
+      "condonation"
+    ],
+    "source": "Academic Regulations"
+  },
+  {
+    "id": "hostel",
+    "title": "Hostel",
+    "question": "How do I apply for a hostel room?",
+    "answer": "Apply through the portal under Hostel, choose your preferred room type and pay the hostel fee. Allotment is based on availability and announced by the warden's office.",
+    "keywords": [
+      "hostel",
+      "room",
+      "accommodation",
+      "warden",
+      "mess",
+      "allotment"
+    ],
+    "source": "Hostel Office"
+  },
+  {
+    "id": "library",
+    "title": "Library",
+    "question": "What are the library timings and rules?",
+    "answer": "The library is open on working days with extended hours before exams. Bring your ID card to borrow books. Digital journals and e-books are available through the library page with your student login.",
+    "keywords": [
+      "library",
+      "timing",
+      "books",
+      "borrow",
+      "issue",
+      "return",
+      "e-books",
+      "journals"
+    ],
+    "source": "Library"
+  },
+  {
+    "id": "wifi_password",
+    "title": "Wifi Password",
+    "question": "How do I reset my password or fix Wi-Fi?",
+    "answer": "Use the Forgot Password link on the portal login page. If Wi-Fi does not connect, forget the network, reconnect with your student ID and raise a ticket with the IT help desk if it continues.",
+    "keywords": [
+      "password",
+      "reset",
+      "wifi",
+      "wi-fi",
+      "internet",
+      "email",
+      "login",
+      "account",
+      "it",
+      "help"
+    ],
+    "source": "IT Help Desk"
+  },
+  {
+    "id": "certificates",
+    "title": "Certificates",
+    "question": "How do I get a bonafide or transfer certificate?",
+    "answer": "Apply for certificates through the student portal under Services. Fees may apply. Processing usually takes a few working days, and you will be notified when it is ready for collection.",
+    "keywords": [
+      "bonafide",
+      "transfer",
+      "certificate",
+      "transcript",
+      "document",
+      "request"
+    ],
+    "source": "Registrar Office"
+  },
+  {
+    "id": "placement",
+    "title": "Placement",
+    "question": "How do placements and internships work?",
+    "answer": "The Training and Placement Cell shares drives and internships on the portal. Register your profile, upload your resume and check the eligibility conditions for each company before applying.",
+    "keywords": [
+      "placement",
+      "internship",
+      "job",
+      "company",
+      "drive",
+      "resume",
+      "campus",
+      "recruitment"
+    ],
+    "source": "Placement Cell"
+  },
+  {
+    "id": "contact",
+    "title": "Contact",
+    "question": "How can I contact the student support office?",
+    "answer": "Visit the student services office on working days, email the helpdesk address on the Contact page, or call the helpline number published there.",
+    "keywords": [
+      "contact",
+      "phone",
+      "email",
+      "helpline",
+      "office",
+      "support",
+      "staff",
+      "talk",
+      "human"
+    ],
+    "source": "Contact Page"
+  }
+]
